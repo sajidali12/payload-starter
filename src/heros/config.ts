@@ -67,6 +67,15 @@ export const hero: Field = {
       relationTo: 'media',
       required: true,
     },
+    {
+      name: 'backgroundColor',
+      type: 'select',
+      options: [
+        { label: 'White', value: 'bg-white' },
+        { label: 'Gray', value: 'bg-gray-200' },
+        { label: 'Black', value: 'bg-black text-white' },
+      ],
+    },
   ],
   label: false,
 }

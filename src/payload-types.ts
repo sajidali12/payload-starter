@@ -126,6 +126,7 @@ export interface Page {
         }[]
       | null;
     media?: (number | null) | Media;
+    backgroundColor?:string;
   };
   layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | CountersBlock)[];
   meta?: {
