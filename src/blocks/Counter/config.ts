@@ -32,13 +32,6 @@ export const Counters: Block = {
       }),
       label: false,
     },
-
-    linkGroup({
-      appearances: ['default', 'outline'],
-      overrides: {
-        maxRows: 2,
-      },
-    }),
   ],
   labels: {
     plural: 'Counters',

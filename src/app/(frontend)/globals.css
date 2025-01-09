@@ -101,3 +101,16 @@ html[data-theme='dark'],
 html[data-theme='light'] {
   opacity: initial;
 }
+
+.section-heading {
+  width: 50%;
+  text-align: center;
+  margin: auto;
+}
+.section-heading h2 {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+.section-heading p {
+  font-size: 16px;
+}

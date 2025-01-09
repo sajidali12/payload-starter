@@ -386,6 +386,7 @@ export interface ContentBlock {
   columns?:
     | {
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
+        customClass: string;
         richText?: {
           root: {
             type: string;

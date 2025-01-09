@@ -52,6 +52,12 @@ const columnFields: Field[] = [
     name: 'enableLink',
     type: 'checkbox',
   },
+  {
+    name: 'customClass',
+    type: 'text', // Use 'select' for predefined options
+    label: 'Custom CSS Class',
+    required: false,
+  },
   link({
     overrides: {
       admin: {
