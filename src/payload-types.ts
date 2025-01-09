@@ -721,6 +721,14 @@ export interface CountersBlock {
   blockName?: string | null;
   blockType: 'counter';
 }
+
+export interface CustomHtmlBlock {
+  title?: string | null;
+  htmlContent?: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'htmlcontent';
+}
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "SectionsHeading".

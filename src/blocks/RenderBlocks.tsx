@@ -10,6 +10,7 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { CountersBlock } from './Counter/Component'
 import { SectionsHeading } from './SectionHeading/Component'
+import { CustomHtmlBlock } from './CustomHtml/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -19,6 +20,7 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   counter: CountersBlock,
   section: SectionsHeading,
+  customhtml: CustomHtmlBlock,
 }
 
 export const RenderBlocks: React.FC<{
@@ -40,7 +42,7 @@ export const RenderBlocks: React.FC<{
             if (Block) {
               return (
                 <div className="my-16" key={index}>
-                  <Block {...block} disableInnerContainer />
+                  <Block {...(block as any)} disableInnerContainer />
                 </div>
               )
             }
