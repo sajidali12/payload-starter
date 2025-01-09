@@ -126,9 +126,17 @@ export interface Page {
         }[]
       | null;
     media?: (number | null) | Media;
-    backgroundColor?:string;
+    backgroundColor?: ('bg-white' | 'bg-gray-200' | 'bg-black text-white') | null;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock | CountersBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | CountersBlock
+    | SectionsHeading
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -668,6 +676,7 @@ export interface Form {
  * via the `definition` "CountersBlock".
  */
 export interface CountersBlock {
+  title?: string | null;
   richText?: {
     root: {
       type: string;
@@ -683,7 +692,6 @@ export interface CountersBlock {
     };
     [k: string]: unknown;
   } | null;
-  title?: string | null;
   links?:
     | {
         link: {
@@ -711,6 +719,34 @@ export interface CountersBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'counter';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionsHeading".
+ */
+export interface SectionsHeading {
+  title?: string | null;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  backgroundColor?:
+    | ('bg-white' | 'bg-gray-200' | 'bg-black text-white' | 'bg-[#D5E8DE]' | 'bg-[#F0F0F0]' | 'bg-[#072C49] text-white')
+    | null;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'section';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -897,6 +933,7 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
             };
         media?: T;
+        backgroundColor?: T;
       };
   layout?:
     | T
@@ -907,6 +944,7 @@ export interface PagesSelect<T extends boolean = true> {
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
         counter?: T | CountersBlockSelect<T>;
+        section?: T | SectionsHeadingSelect<T>;
       };
   meta?:
     | T
@@ -1011,8 +1049,8 @@ export interface FormBlockSelect<T extends boolean = true> {
  * via the `definition` "CountersBlock_select".
  */
 export interface CountersBlockSelect<T extends boolean = true> {
-  richText?: T;
   title?: T;
+  richText?: T;
   links?:
     | T
     | {
@@ -1028,6 +1066,17 @@ export interface CountersBlockSelect<T extends boolean = true> {
             };
         id?: T;
       };
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "SectionsHeading_select".
+ */
+export interface SectionsHeadingSelect<T extends boolean = true> {
+  title?: T;
+  richText?: T;
+  backgroundColor?: T;
   id?: T;
   blockName?: T;
 }

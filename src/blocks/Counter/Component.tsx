@@ -1,19 +1,18 @@
 import React from 'react'
 
-import type { CounterBlock as CountProps } from '@/payload-types'
+import type { CountersBlock as CountProps } from '@/payload-types'
 
-import RichText from '@/components/RichText'
-import { Input } from '@/components/ui/input'
 import { CMSLink } from '@/components/Link'
+import RichText from '@/components/RichText'
 
-export const CountersBlock: React.FC<CountProps> = ({ links, richText }) => {
+export const CountersBlock: React.FC<CountProps> = ({ links, title, richText }) => {
   return (
-    <div className="container">
-      <div className="bg-card rounded border-border border p-4 flex flex-col gap-8 md:flex-row md:justify-between md:items-center">
-        <div className="max-w-[48rem] flex items-center">
+    <div className="bg-card">
+      <div className="container">
+        <div className="">
+          <h2>{title}</h2>
           {richText && <RichText className="mb-0" data={richText} enableGutter={false} />}
         </div>
-        <div>test</div>
         <div className="flex flex-col gap-8">
           {(links || []).map(({ link }, i) => {
             return <CMSLink key={i} size="lg" {...link} />

@@ -7,11 +7,9 @@ import {
   lexicalEditor,
 } from '@payloadcms/richtext-lexical'
 
-import { linkGroup } from '../../fields/linkGroup'
-
-export const Counters: Block = {
-  slug: 'counter',
-  interfaceName: 'CountersBlock',
+export const Sections: Block = {
+  slug: 'section',
+  interfaceName: 'SectionsHeading',
   fields: [
     {
       name: 'title',
@@ -32,16 +30,21 @@ export const Counters: Block = {
       }),
       label: false,
     },
-
-    linkGroup({
-      appearances: ['default', 'outline'],
-      overrides: {
-        maxRows: 2,
-      },
-    }),
+    {
+      name: 'backgroundColor',
+      type: 'select',
+      options: [
+        { label: 'White', value: 'bg-white' },
+        { label: 'Gray', value: 'bg-gray-200' },
+        { label: 'Black', value: 'bg-black text-white' },
+        { label: 'Light Green', value: 'bg-[#D5E8DE]' },
+        { label: 'Light Gray', value: 'bg-[#F0F0F0]' },
+        { label: 'Dark Blue', value: 'bg-[#072C49] text-white' },
+      ],
+    },
   ],
   labels: {
-    plural: 'Counters',
-    singular: 'Counter',
+    plural: 'Sections',
+    singular: 'Section',
   },
 }
