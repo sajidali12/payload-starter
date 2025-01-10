@@ -5,7 +5,7 @@ import type { CountersBlock as CountProps } from '@/payload-types'
 import { CMSLink } from '@/components/Link'
 import RichText from '@/components/RichText'
 
-export const CountersBlock: React.FC<CountProps> = ({ links, title, richText }) => {
+export const CountersBlock: React.FC<CountProps> = ({ title, richText }) => {
   return (
     <div
       className="md:h-72 flex relative mt-20"

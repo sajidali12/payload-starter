@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import React from 'react'
-import sanitizeHtml from 'sanitize-html'
 
 export const CustomHtmlBlock: React.FC<{ htmlContent?: string }> = ({ htmlContent }) => {
   return (

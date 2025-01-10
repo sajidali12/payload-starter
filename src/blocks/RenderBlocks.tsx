@@ -11,6 +11,11 @@ import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { CountersBlock } from './Counter/Component'
 import { SectionsHeading } from './SectionHeading/Component'
 import { CustomHtmlBlock } from './CustomHtml/Component'
+import { UpComingEventsBlock } from './UpComingEventsBlock/Component'
+import { LearnEnglishBlock } from './LearnEnglishBlock/Component'
+import { FriendsCornerBlock } from './FriendsCornerBlock/Component'
+import { FaqBlock } from './FaqBlock/Component'
+import { GetinTouchBlock } from './GetinTouchBlock/Component'
 
 const blockComponents = {
   archive: ArchiveBlock,
@@ -21,6 +26,11 @@ const blockComponents = {
   counter: CountersBlock,
   section: SectionsHeading,
   customhtml: CustomHtmlBlock,
+  upcomingevents: UpComingEventsBlock,
+  learninglish: LearnEnglishBlock,
+  friendscorner: FriendsCornerBlock,
+  faqblock: FaqBlock,
+  getintouch: GetinTouchBlock,
 }
 
 export const RenderBlocks: React.FC<{

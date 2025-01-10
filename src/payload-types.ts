@@ -136,6 +136,12 @@ export interface Page {
     | FormBlock
     | CountersBlock
     | SectionsHeading
+    | CustomHtmlBlock
+    | UpComingEventsBlock
+    | LearnEnglishBlock
+    | FriendsCornerBlock
+    | FaqBlock
+    | GetinTouchBlock
   )[];
   meta?: {
     title?: string | null;
@@ -386,7 +392,6 @@ export interface ContentBlock {
   columns?:
     | {
         size?: ('oneThird' | 'half' | 'twoThirds' | 'full') | null;
-        customClass: string;
         richText?: {
           root: {
             type: string;
@@ -403,6 +408,7 @@ export interface ContentBlock {
           [k: string]: unknown;
         } | null;
         enableLink?: boolean | null;
+        customClass?: string | null;
         link?: {
           type?: ('reference' | 'custom') | null;
           newTab?: boolean | null;
@@ -693,41 +699,9 @@ export interface CountersBlock {
     };
     [k: string]: unknown;
   } | null;
-  links?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-          /**
-           * Choose how the link should be rendered.
-           */
-          appearance?: ('default' | 'outline') | null;
-        };
-        id?: string | null;
-      }[]
-    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'counter';
-}
-
-export interface CustomHtmlBlock {
-  title?: string | null;
-  htmlContent?: string;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'htmlcontent';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -756,6 +730,66 @@ export interface SectionsHeading {
   id?: string | null;
   blockName?: string | null;
   blockType: 'section';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CustomHtmlBlock".
+ */
+export interface CustomHtmlBlock {
+  htmlContent: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'customhtml';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "UpComingEventsBlock".
+ */
+export interface UpComingEventsBlock {
+  upcomingevents: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'upcomingevents';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LearnEnglishBlock".
+ */
+export interface LearnEnglishBlock {
+  upcomingevents: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'learninglish';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FriendsCornerBlock".
+ */
+export interface FriendsCornerBlock {
+  frinedscorner: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'friendscorner';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqBlock".
+ */
+export interface FaqBlock {
+  faq: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'faqblock';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GetinTouchBlock".
+ */
+export interface GetinTouchBlock {
+  gettouch: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'getintouch';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -954,6 +988,12 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         counter?: T | CountersBlockSelect<T>;
         section?: T | SectionsHeadingSelect<T>;
+        customhtml?: T | CustomHtmlBlockSelect<T>;
+        upcomingevents?: T | UpComingEventsBlockSelect<T>;
+        learninglish?: T | LearnEnglishBlockSelect<T>;
+        friendscorner?: T | FriendsCornerBlockSelect<T>;
+        faqblock?: T | FaqBlockSelect<T>;
+        getintouch?: T | GetinTouchBlockSelect<T>;
       };
   meta?:
     | T
@@ -1004,6 +1044,7 @@ export interface ContentBlockSelect<T extends boolean = true> {
         size?: T;
         richText?: T;
         enableLink?: T;
+        customClass?: T;
         link?:
           | T
           | {
@@ -1060,21 +1101,6 @@ export interface FormBlockSelect<T extends boolean = true> {
 export interface CountersBlockSelect<T extends boolean = true> {
   title?: T;
   richText?: T;
-  links?:
-    | T
-    | {
-        link?:
-          | T
-          | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
-              appearance?: T;
-            };
-        id?: T;
-      };
   id?: T;
   blockName?: T;
 }
@@ -1086,6 +1112,60 @@ export interface SectionsHeadingSelect<T extends boolean = true> {
   title?: T;
   richText?: T;
   backgroundColor?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CustomHtmlBlock_select".
+ */
+export interface CustomHtmlBlockSelect<T extends boolean = true> {
+  htmlContent?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "UpComingEventsBlock_select".
+ */
+export interface UpComingEventsBlockSelect<T extends boolean = true> {
+  upcomingevents?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "LearnEnglishBlock_select".
+ */
+export interface LearnEnglishBlockSelect<T extends boolean = true> {
+  upcomingevents?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FriendsCornerBlock_select".
+ */
+export interface FriendsCornerBlockSelect<T extends boolean = true> {
+  frinedscorner?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "FaqBlock_select".
+ */
+export interface FaqBlockSelect<T extends boolean = true> {
+  faq?: T;
+  id?: T;
+  blockName?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "GetinTouchBlock_select".
+ */
+export interface GetinTouchBlockSelect<T extends boolean = true> {
+  gettouch?: T;
   id?: T;
   blockName?: T;
 }

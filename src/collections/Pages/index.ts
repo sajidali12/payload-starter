@@ -23,6 +23,11 @@ import {
 } from '@payloadcms/plugin-seo/fields'
 import { Sections } from '@/blocks/SectionHeading/config'
 import { CustomHtmlBlock } from '@/blocks/CustomHtml/config'
+import { UpComingEventsBlock } from '@/blocks/UpComingEventsBlock/config'
+import { LearnEnglishBlock } from '@/blocks/LearnEnglishBlock/config'
+import { FriendsCornerBlock } from '@/blocks/FriendsCornerBlock/config'
+import { FaqBlock } from '@/blocks/FaqBlock/config'
+import { GetinTouchBlock } from '@/blocks/GetinTouchBlock/config'
 
 export const Pages: CollectionConfig<'pages'> = {
   slug: 'pages',
@@ -87,6 +92,11 @@ export const Pages: CollectionConfig<'pages'> = {
                 Counters,
                 Sections,
                 CustomHtmlBlock,
+                UpComingEventsBlock,
+                LearnEnglishBlock,
+                FriendsCornerBlock,
+                FaqBlock,
+                GetinTouchBlock,
               ],
               required: true,
               admin: {
