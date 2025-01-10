@@ -41,7 +41,7 @@ export const HighImpactHero: React.FC<Page['hero']> = ({ links, media, richText 
           <Media fill imgClassName="-z-10 object-cover" priority resource={media} />
         )}
       </div>
-      <div className="absolute inset-0 bg-opacity-50 flex items-center justify-center transition-opacity duration-300 ease-in-out"></div>
+      <div className="absolute inset-0 bg-themeprimary bg-opacity-50 flex items-center justify-center transition-opacity duration-300 ease-in-out"></div>
     </div>
   )
 }

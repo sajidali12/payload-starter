@@ -1586,29 +1586,26 @@ export interface Header {
  */
 export interface Footer {
   id: number;
-  navItems?:
-    | {
-        link: {
-          type?: ('reference' | 'custom') | null;
-          newTab?: boolean | null;
-          reference?:
-            | ({
-                relationTo: 'pages';
-                value: number | Page;
-              } | null)
-            | ({
-                relationTo: 'posts';
-                value: number | Post;
-              } | null);
-          url?: string | null;
-          label: string;
-        };
-        id?: string | null;
-      }[]
-    | null;
+  columns?: {
+    columnTitle: string; // Title for the column
+    navItems: {
+      link: {
+        type?: 'reference' | 'custom' | null;
+        newTab?: boolean | null;
+        reference?:
+          | { relationTo: 'pages'; value: number | Page }
+          | { relationTo: 'posts'; value: number | Post }
+          | null;
+        url?: string | null;
+        label: string;
+      };
+      id?: string | null;
+    }[];
+  }[] | null; // Array of columns, each containing a title and a list of links
   updatedAt?: string | null;
   createdAt?: string | null;
 }
+
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
