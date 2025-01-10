@@ -1586,26 +1586,35 @@ export interface Header {
  */
 export interface Footer {
   id: number;
-  columns?: {
-    columnTitle: string; // Title for the column
-    navItems: {
-      link: {
-        type?: 'reference' | 'custom' | null;
-        newTab?: boolean | null;
-        reference?:
-          | { relationTo: 'pages'; value: number | Page }
-          | { relationTo: 'posts'; value: number | Post }
+  columns?:
+    | {
+        columnTitle: string;
+        navItems?:
+          | {
+              link: {
+                type?: ('reference' | 'custom') | null;
+                newTab?: boolean | null;
+                reference?:
+                  | ({
+                      relationTo: 'pages';
+                      value: number | Page;
+                    } | null)
+                  | ({
+                      relationTo: 'posts';
+                      value: number | Post;
+                    } | null);
+                url?: string | null;
+                label: string;
+              };
+              id?: string | null;
+            }[]
           | null;
-        url?: string | null;
-        label: string;
-      };
-      id?: string | null;
-    }[];
-  }[] | null; // Array of columns, each containing a title and a list of links
+        id?: string | null;
+      }[]
+    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
-
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "header_select".
@@ -1634,17 +1643,23 @@ export interface HeaderSelect<T extends boolean = true> {
  * via the `definition` "footer_select".
  */
 export interface FooterSelect<T extends boolean = true> {
-  navItems?:
+  columns?:
     | T
     | {
-        link?:
+        columnTitle?: T;
+        navItems?:
           | T
           | {
-              type?: T;
-              newTab?: T;
-              reference?: T;
-              url?: T;
-              label?: T;
+              link?:
+                | T
+                | {
+                    type?: T;
+                    newTab?: T;
+                    reference?: T;
+                    url?: T;
+                    label?: T;
+                  };
+              id?: T;
             };
         id?: T;
       };

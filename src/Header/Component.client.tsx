@@ -8,7 +8,8 @@ import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
 import { HeaderNav } from './Nav'
-import { PhoneCall, SearchIcon } from 'lucide-react'
+import { CrossIcon, Menu, PhoneCall, SearchIcon } from 'lucide-react'
+import clsx from 'clsx'
 
 interface HeaderClientProps {
   data: Header
@@ -30,6 +31,8 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [headerTheme])
 
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   return (
     <header className="relative z-20 bg-white py-2" {...(theme ? { 'data-theme': theme } : {})}>
       <div className="container">
@@ -37,7 +40,17 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <Link href="/">
             <Logo loading="eager" priority="high" className="invert dark:invert-0" />
           </Link>
-          <HeaderNav data={data} />
+          <button
+            onClick={toggleMenu}
+            className="md:hidden p-2 text-gray-500 rounded-lg focus:outline-none text-right"
+            aria-label="Toggle Menu"
+            aria-expanded={isMenuOpen ? 'true' : 'false'}
+          >
+            {!isMenuOpen && <Menu className="w-6 h-6 text-right" />}
+          </button>
+          <div className="hidden md:block">
+            <HeaderNav data={data} />
+          </div>
           <div className="h-[40px] p-2 hidden xl:flex border text-green-700 border-green-700 rounded-md text-center hover:scale-105 justify-center items-center transition-all duration-300 ease-in-out">
             <Link href="" className="flex items-center gap-2">
               <PhoneCall className="h-5 w-5 text-green-700" />
@@ -50,7 +63,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               <SearchIcon className="w-5 text-primary absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
               <input
                 type="text"
-                className="p-2 pl-10 pr-16 border border-gray-300 rounded-md bg-green-700 text-white placeholder:text-white"
+                className="p-3 pl-10 pr-16 border border-gray-300 rounded-md bg-green-700 text-white placeholder:text-white"
                 placeholder="Enter here"
               />
             </div>
@@ -58,6 +71,24 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
               Search
             </button>
           </div>
+        </div>
+        <div
+          className={clsx(
+            'lg:hidden fixed top-0 left-0 w-full h-[400px] bg-white transition-transform duration-300 ease-in-out z-10',
+            { 'translate-x-0': isMenuOpen, 'translate-x-full': !isMenuOpen },
+          )}
+        >
+          <div className="flex justify-between p-6">
+            <Logo />
+            <button onClick={toggleMenu} className="text-">
+              <CrossIcon className="w-6 h-6" />
+            </button>
+          </div>
+          <ul>
+            <li>
+              <HeaderNav data={data} />
+            </li>
+          </ul>
         </div>
       </div>
     </header>
