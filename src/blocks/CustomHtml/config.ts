@@ -1,14 +1,28 @@
 import type { Block } from 'payload'
+import { linkGroup } from '../../fields/linkGroup'
 
-export const CustomHtmlBlock: Block = {
-  slug: 'customhtml',
-  interfaceName: 'CustomHtmlBlock',
+export const CornerCardsBlock: Block = {
+  slug: 'cornercardsblock',
+  interfaceName: 'CornerCardsBlock',
   fields: [
     {
-      name: 'htmlContent',
-      type: 'textarea',
-      required: true,
-      label: 'HTML Content',
+      name: 'desc',
+      type: 'text',
+      label: 'Description',
     },
+    {
+      name: 'image',
+      type: 'upload',
+      label: 'Image',
+      relationTo: 'media',
+      required: true,
+    },
+    linkGroup({
+      appearances: ['default', 'outline'],
+      overrides: {
+        minRows: 1,
+        maxRows: 7,
+      },
+    }),
   ],
 }

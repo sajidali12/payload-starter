@@ -5,10 +5,58 @@ export const FaqBlock: Block = {
   interfaceName: 'FaqBlock',
   fields: [
     {
-      name: 'faq',
-      type: 'textarea',
+      name: 'title',
+      type: 'text',
+    },
+    {
+      name: 'faqs',
+      type: 'array',
+      label: 'FAQ',
+      minRows: 1,
+      maxRows: 6,
+      fields: [
+        {
+          name: 'question',
+          type: 'text',
+          label: 'Faq Question',
+          required: true,
+        },
+        {
+          name: 'answere',
+          type: 'text',
+          label: 'Faq Answere',
+          required: true,
+        },
+      ],
+    },
+    {
+      name: 'image',
+      type: 'upload',
+      label: 'Image',
+      relationTo: 'media',
       required: true,
-      label: 'FAQ Section',
+    },
+    {
+      name: 'cities',
+      type: 'array',
+      label: 'Add Citiy Name and image',
+      minRows: 1,
+      maxRows: 6,
+      fields: [
+        {
+          name: 'image',
+          type: 'upload',
+          label: 'Image',
+          relationTo: 'media',
+          required: true,
+        },
+        {
+          name: 'cityname',
+          type: 'text',
+          label: 'City Name',
+          required: true,
+        },
+      ],
     },
   ],
 }

@@ -136,7 +136,7 @@ export interface Page {
     | FormBlock
     | CountersBlock
     | SectionsHeading
-    | CustomHtmlBlock
+    | CornerCardsBlock
     | UpComingEventsBlock
     | LearnEnglishBlock
     | FriendsCornerBlock
@@ -683,22 +683,13 @@ export interface Form {
  * via the `definition` "CountersBlock".
  */
 export interface CountersBlock {
-  title?: string | null;
-  richText?: {
-    root: {
-      type: string;
-      children: {
-        type: string;
-        version: number;
-        [k: string]: unknown;
-      }[];
-      direction: ('ltr' | 'rtl') | null;
-      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
-      indent: number;
-      version: number;
-    };
-    [k: string]: unknown;
-  } | null;
+  columns?:
+    | {
+        heading?: string | null;
+        content?: string | null;
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'counter';
@@ -733,20 +724,65 @@ export interface SectionsHeading {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CustomHtmlBlock".
+ * via the `definition` "CornerCardsBlock".
  */
-export interface CustomHtmlBlock {
-  htmlContent: string;
+export interface CornerCardsBlock {
+  desc?: string | null;
+  image: number | Media;
+  links?:
+    | {
+        link: {
+          type?: ('reference' | 'custom') | null;
+          newTab?: boolean | null;
+          reference?:
+            | ({
+                relationTo: 'pages';
+                value: number | Page;
+              } | null)
+            | ({
+                relationTo: 'posts';
+                value: number | Post;
+              } | null);
+          url?: string | null;
+          label: string;
+          /**
+           * Choose how the link should be rendered.
+           */
+          appearance?: ('default' | 'outline') | null;
+        };
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'customhtml';
+  blockType: 'cornercardsblock';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "UpComingEventsBlock".
  */
 export interface UpComingEventsBlock {
-  upcomingevents: string;
+  months?:
+    | {
+        name?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  year?: string | null;
+  cards?:
+    | {
+        image?: (number | null) | Media;
+        para1?: string | null;
+        para2?: string | null;
+        date?: string | null;
+        time?: string | null;
+        peoples?: string | null;
+        events?: string | null;
+        public?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  link?: string | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'upcomingevents';
@@ -756,17 +792,70 @@ export interface UpComingEventsBlock {
  * via the `definition` "LearnEnglishBlock".
  */
 export interface LearnEnglishBlock {
-  upcomingevents: string;
+  title?: string | null;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  cards?:
+    | {
+        title: string;
+        backgroundImage: number | Media;
+        id?: string | null;
+      }[]
+    | null;
+  backgroundColor?:
+    | ('bg-white' | 'bg-gray-200' | 'bg-black text-white' | 'bg-[#D5E8DE]' | 'bg-[#F0F0F0]' | 'bg-[#072C49] text-white')
+    | null;
   id?: string | null;
   blockName?: string | null;
-  blockType: 'learninglish';
+  blockType: 'learnEnglish';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "FriendsCornerBlock".
  */
 export interface FriendsCornerBlock {
-  frinedscorner: string;
+  title?: string | null;
+  subtitle?: string | null;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  backgroundColor?:
+    | ('bg-white' | 'bg-gray-200' | 'bg-black text-white' | 'bg-[#D5E8DE]' | 'bg-[#F0F0F0]' | 'bg-[#072C49] text-white')
+    | null;
+  image: number | Media;
+  reviews?:
+    | {
+        title: string;
+        description: string;
+        organization: string;
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'friendscorner';
@@ -776,7 +865,22 @@ export interface FriendsCornerBlock {
  * via the `definition` "FaqBlock".
  */
 export interface FaqBlock {
-  faq: string;
+  title?: string | null;
+  faqs?:
+    | {
+        question: string;
+        answere: string;
+        id?: string | null;
+      }[]
+    | null;
+  image: number | Media;
+  cities?:
+    | {
+        image: number | Media;
+        cityname: string;
+        id?: string | null;
+      }[]
+    | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'faqblock';
@@ -786,7 +890,42 @@ export interface FaqBlock {
  * via the `definition` "GetinTouchBlock".
  */
 export interface GetinTouchBlock {
-  gettouch: string;
+  form?: (number | null) | Form;
+  title?: string | null;
+  image: number | Media;
+  desc?: string | null;
+  officetiming?:
+    | {
+        startDay: string;
+        endDay: string;
+        startTime: string;
+        endTime: string;
+        id?: string | null;
+      }[]
+    | null;
+  contactInfo?:
+    | {
+        phone: string;
+        id?: string | null;
+      }[]
+    | null;
+  subDescription?: string | null;
+  richText?: {
+    root: {
+      type: string;
+      children: {
+        type: string;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  } | null;
+  backgroundColor?: ('bg-[#D5E8DE]' | 'bg-[#F0F0F0]') | null;
   id?: string | null;
   blockName?: string | null;
   blockType: 'getintouch';
@@ -988,9 +1127,9 @@ export interface PagesSelect<T extends boolean = true> {
         formBlock?: T | FormBlockSelect<T>;
         counter?: T | CountersBlockSelect<T>;
         section?: T | SectionsHeadingSelect<T>;
-        customhtml?: T | CustomHtmlBlockSelect<T>;
+        cornercardsblock?: T | CornerCardsBlockSelect<T>;
         upcomingevents?: T | UpComingEventsBlockSelect<T>;
-        learninglish?: T | LearnEnglishBlockSelect<T>;
+        learnEnglish?: T | LearnEnglishBlockSelect<T>;
         friendscorner?: T | FriendsCornerBlockSelect<T>;
         faqblock?: T | FaqBlockSelect<T>;
         getintouch?: T | GetinTouchBlockSelect<T>;
@@ -1099,8 +1238,13 @@ export interface FormBlockSelect<T extends boolean = true> {
  * via the `definition` "CountersBlock_select".
  */
 export interface CountersBlockSelect<T extends boolean = true> {
-  title?: T;
-  richText?: T;
+  columns?:
+    | T
+    | {
+        heading?: T;
+        content?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1117,10 +1261,26 @@ export interface SectionsHeadingSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CustomHtmlBlock_select".
+ * via the `definition` "CornerCardsBlock_select".
  */
-export interface CustomHtmlBlockSelect<T extends boolean = true> {
-  htmlContent?: T;
+export interface CornerCardsBlockSelect<T extends boolean = true> {
+  desc?: T;
+  image?: T;
+  links?:
+    | T
+    | {
+        link?:
+          | T
+          | {
+              type?: T;
+              newTab?: T;
+              reference?: T;
+              url?: T;
+              label?: T;
+              appearance?: T;
+            };
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1129,7 +1289,27 @@ export interface CustomHtmlBlockSelect<T extends boolean = true> {
  * via the `definition` "UpComingEventsBlock_select".
  */
 export interface UpComingEventsBlockSelect<T extends boolean = true> {
-  upcomingevents?: T;
+  months?:
+    | T
+    | {
+        name?: T;
+        id?: T;
+      };
+  year?: T;
+  cards?:
+    | T
+    | {
+        image?: T;
+        para1?: T;
+        para2?: T;
+        date?: T;
+        time?: T;
+        peoples?: T;
+        events?: T;
+        public?: T;
+        id?: T;
+      };
+  link?: T;
   id?: T;
   blockName?: T;
 }
@@ -1138,7 +1318,16 @@ export interface UpComingEventsBlockSelect<T extends boolean = true> {
  * via the `definition` "LearnEnglishBlock_select".
  */
 export interface LearnEnglishBlockSelect<T extends boolean = true> {
-  upcomingevents?: T;
+  title?: T;
+  richText?: T;
+  cards?:
+    | T
+    | {
+        title?: T;
+        backgroundImage?: T;
+        id?: T;
+      };
+  backgroundColor?: T;
   id?: T;
   blockName?: T;
 }
@@ -1147,7 +1336,19 @@ export interface LearnEnglishBlockSelect<T extends boolean = true> {
  * via the `definition` "FriendsCornerBlock_select".
  */
 export interface FriendsCornerBlockSelect<T extends boolean = true> {
-  frinedscorner?: T;
+  title?: T;
+  subtitle?: T;
+  richText?: T;
+  backgroundColor?: T;
+  image?: T;
+  reviews?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        organization?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1156,7 +1357,22 @@ export interface FriendsCornerBlockSelect<T extends boolean = true> {
  * via the `definition` "FaqBlock_select".
  */
 export interface FaqBlockSelect<T extends boolean = true> {
-  faq?: T;
+  title?: T;
+  faqs?:
+    | T
+    | {
+        question?: T;
+        answere?: T;
+        id?: T;
+      };
+  image?: T;
+  cities?:
+    | T
+    | {
+        image?: T;
+        cityname?: T;
+        id?: T;
+      };
   id?: T;
   blockName?: T;
 }
@@ -1165,7 +1381,28 @@ export interface FaqBlockSelect<T extends boolean = true> {
  * via the `definition` "GetinTouchBlock_select".
  */
 export interface GetinTouchBlockSelect<T extends boolean = true> {
-  gettouch?: T;
+  form?: T;
+  title?: T;
+  image?: T;
+  desc?: T;
+  officetiming?:
+    | T
+    | {
+        startDay?: T;
+        endDay?: T;
+        startTime?: T;
+        endTime?: T;
+        id?: T;
+      };
+  contactInfo?:
+    | T
+    | {
+        phone?: T;
+        id?: T;
+      };
+  subDescription?: T;
+  richText?: T;
+  backgroundColor?: T;
   id?: T;
   blockName?: T;
 }
