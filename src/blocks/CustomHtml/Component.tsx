@@ -1,15 +1,16 @@
+import { CornerCardsBlock as CornerCardsProps } from '@/payload-types'
+import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
-export const CustomHtmlBlock: React.FC<{ htmlContent?: string }> = ({ htmlContent }) => {
+export const CornerCardsBlock: React.FC<CornerCardsProps> = () => {
   return (
     <div className="container">
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+      <div className="flex flex-col md:flex-row gap-4">
         {/* First Column*/}
-        <div className="bg-blue-50 p-6 rounded-md shadow-md group">
-          <p className="mb-4">”Startup Essentials Bootcamp”</p>
+        <div className="bg-blue-50 p-6 rounded-md shadow-md group h-fit">
           <p className="mb-2 text-gray-600">
-            Digital Marketing Bootcamp at Lincoln Corner Peshawar!
+            Startup Essentials BootcampDigital Marketing Bootcamp at Lincoln Corner Peshawar!
           </p>
           <img
             src="/latest-Image-1.svg"
@@ -18,7 +19,7 @@ export const CustomHtmlBlock: React.FC<{ htmlContent?: string }> = ({ htmlConten
           />
           <Link href="#" className="mt-4 text-green-700 flex items-center space-x-2 group">
             <span className="font-medium">Join Bootcamp</span>
-            {/* <IoIosArrowRoundForward className="text-2xl transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" /> */}
+            <ArrowRight className="transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" />
           </Link>
         </div>
 
@@ -36,7 +37,7 @@ export const CustomHtmlBlock: React.FC<{ htmlContent?: string }> = ({ htmlConten
             />
             <Link href="#" className="text-green-700 flex items-center space-x-2">
               <span>Discover More</span>
-              {/* <IoIosArrowRoundForward className="text-2xl transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" /> */}
+              <ArrowRight className="transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" />
             </Link>
           </div>
           {/* Small Card 2 */}
@@ -49,7 +50,7 @@ export const CustomHtmlBlock: React.FC<{ htmlContent?: string }> = ({ htmlConten
             />
             <Link href="#" className="text-green-700 flex items-center space-x-2">
               <span>Interviews</span>
-              {/* <IoIosArrowRoundForward className="text-2xl transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" /> */}
+              <ArrowRight className="transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" />
             </Link>
           </div>
         </div>
@@ -69,7 +70,7 @@ export const CustomHtmlBlock: React.FC<{ htmlContent?: string }> = ({ htmlConten
             />
             <Link href="#" className="text-green-700 flex items-center space-x-2">
               <span>Discover More</span>
-              {/* <IoIosArrowRoundForward className="text-2xl transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" /> */}
+              <ArrowRight className="transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" />
             </Link>
           </div>
           {/* Small Card 2 */}
@@ -84,7 +85,7 @@ export const CustomHtmlBlock: React.FC<{ htmlContent?: string }> = ({ htmlConten
             />
             <Link href="#" className="text-green-700 flex items-center space-x-2">
               <span>Discover More</span>
-              {/* <IoIosArrowRoundForward className="text-2xl transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" /> */}
+              <ArrowRight className="transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" />
             </Link>
           </div>
         </div>
@@ -101,7 +102,7 @@ export const CustomHtmlBlock: React.FC<{ htmlContent?: string }> = ({ htmlConten
             />
             <Link href="#" className="text-green-700 flex items-center space-x-2">
               <span>Discover More</span>
-              {/* <IoIosArrowRoundForward className="text-2xl transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" /> */}
+              <ArrowRight className="transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" />
             </Link>
           </div>
           {/* Small Card 2 */}
@@ -117,7 +118,7 @@ export const CustomHtmlBlock: React.FC<{ htmlContent?: string }> = ({ htmlConten
             />
             <Link href="#" className="text-green-700 flex items-center space-x-2">
               <span>Podcast</span>
-              {/* <IoIosArrowRoundForward className="text-2xl transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" /> */}
+              <ArrowRight className="transition-transform duration-300 ease-in-out transform group-hover:rotate-[360deg]" />
             </Link>
           </div>
         </div>

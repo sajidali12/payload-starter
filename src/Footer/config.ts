@@ -35,7 +35,7 @@ export const Footer: GlobalConfig = {
         },
       ],
       minRows: 1,
-      maxRows: 4,
+      maxRows: 5,
       labels: {
         singular: 'Column',
         plural: 'Columns',

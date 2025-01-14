@@ -14,23 +14,25 @@ export const Counters: Block = {
   interfaceName: 'CountersBlock',
   fields: [
     {
-      name: 'title',
-      type: 'text',
-    },
-    {
-      name: 'richText',
-      type: 'richText',
-      editor: lexicalEditor({
-        features: ({ rootFeatures }) => {
-          return [
-            ...rootFeatures,
-            HeadingFeature({ enabledHeadingSizes: ['h1', 'h2', 'h3', 'h4'] }),
-            FixedToolbarFeature(),
-            InlineToolbarFeature(),
-          ]
+      name: 'columns',
+      type: 'array',
+      label: 'Columns',
+      labels: {
+        singular: 'Column',
+        plural: 'Columns',
+      },
+      fields: [
+        {
+          name: 'heading',
+          type: 'text',
+          label: 'Heading',
         },
-      }),
-      label: false,
+        {
+          name: 'content',
+          type: 'text',
+          label: 'Content',
+        },
+      ],
     },
   ],
   labels: {

@@ -10,7 +10,7 @@ import { FormBlock } from '@/blocks/Form/Component'
 import { MediaBlock } from '@/blocks/MediaBlock/Component'
 import { CountersBlock } from './Counter/Component'
 import { SectionsHeading } from './SectionHeading/Component'
-import { CustomHtmlBlock } from './CustomHtml/Component'
+import { CornerCardsBlock } from './CustomHtml/Component'
 import { UpComingEventsBlock } from './UpComingEventsBlock/Component'
 import { LearnEnglishBlock } from './LearnEnglishBlock/Component'
 import { FriendsCornerBlock } from './FriendsCornerBlock/Component'
@@ -25,9 +25,9 @@ const blockComponents = {
   mediaBlock: MediaBlock,
   counter: CountersBlock,
   section: SectionsHeading,
-  customhtml: CustomHtmlBlock,
+  cornercardsblock: CornerCardsBlock,
   upcomingevents: UpComingEventsBlock,
-  learninglish: LearnEnglishBlock,
+  learnEnglish: LearnEnglishBlock,
   friendscorner: FriendsCornerBlock,
   faqblock: FaqBlock,
   getintouch: GetinTouchBlock,
@@ -51,7 +51,7 @@ export const RenderBlocks: React.FC<{
 
             if (Block) {
               return (
-                <div className="my-16" key={index}>
+                <div className="" key={index}>
                   <Block {...(block as any)} disableInnerContainer />
                 </div>
               )
