@@ -35,7 +35,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
   return (
     <header className="relative z-20 bg-white py-2" {...(theme ? { 'data-theme': theme } : {})}>
-      <div className="container">
+      <div className="px-5">
         <div className="flex justify-between items-center">
           <Link href="/">
             <Logo loading="eager" priority="high" className="invert dark:invert-0" />
@@ -58,7 +58,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             </Link>
           </div>
           <div className="hidden xl:flex items-center space-x-3 relative">
-            <div className="relative w-full">
+            <div className="relative">
               {/* Search icon */}
               <SearchIcon className="w-5 text-primary absolute left-3 top-1/2 transform -translate-y-1/2 text-white" />
               <input
@@ -74,7 +74,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
         </div>
         <div
           className={clsx(
-            'lg:hidden fixed top-0 left-0 w-full h-[400px] bg-white transition-transform duration-300 ease-in-out z-10',
+            'lg:hidden fixed top-0 left-0 w-full h-auto bg-white transition-transform duration-300 ease-in-out z-10',
             { 'translate-x-0': isMenuOpen, 'translate-x-full': !isMenuOpen },
           )}
         >

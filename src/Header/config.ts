@@ -16,8 +16,22 @@ export const Header: GlobalConfig = {
         link({
           appearances: false,
         }),
+        {
+          name: 'dropDownMenu',
+          type: 'array',
+          minRows: 1,
+          maxRows: 6,
+          fields: [
+            link({
+              appearances: false,
+            }),
+          ],
+          admin: {
+            initCollapsed: true,
+          },
+        },
       ],
-      maxRows: 6,
+      maxRows: 7,
       admin: {
         initCollapsed: true,
         components: {
