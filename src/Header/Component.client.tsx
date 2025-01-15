@@ -3,13 +3,14 @@ import { useHeaderTheme } from '@/providers/HeaderTheme'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
+import { RxCross2, RxHamburgerMenu } from 'react-icons/rx'
 
 import type { Header } from '@/payload-types'
 
 import { Logo } from '@/components/Logo/Logo'
-import { HeaderNav } from './Nav'
-import { CrossIcon, Menu, PhoneCall, SearchIcon } from 'lucide-react'
 import clsx from 'clsx'
+import { PhoneCall, SearchIcon } from 'lucide-react'
+import { HeaderNav } from './Nav'
 
 interface HeaderClientProps {
   data: Header
@@ -46,10 +47,10 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
             aria-label="Toggle Menu"
             aria-expanded={isMenuOpen ? 'true' : 'false'}
           >
-            {!isMenuOpen && <Menu className="w-6 h-6 text-right" />}
+            {!isMenuOpen && <RxHamburgerMenu className="w-6 h-6 text-right" />}
           </button>
           <div className="hidden md:block">
-            <HeaderNav data={data} />
+            <HeaderNav data={data} className="hover:no-underline" />
           </div>
           <div className="h-[40px] p-2 hidden xl:flex border text-green-700 border-green-700 rounded-md text-center hover:scale-105 justify-center items-center transition-all duration-300 ease-in-out">
             <Link href="" className="flex items-center gap-2">
@@ -81,7 +82,7 @@ export const HeaderClient: React.FC<HeaderClientProps> = ({ data }) => {
           <div className="flex justify-between p-6">
             <Logo />
             <button onClick={toggleMenu} className="text-">
-              <CrossIcon className="w-6 h-6" />
+              <RxCross2 className="w-6 h-6" />
             </button>
           </div>
           <ul>
