@@ -15,6 +15,7 @@ export const GetinTouchBlock: React.FC<GetinTouchProps> = ({
   backgroundColor,
   form,
 }) => {
+  console.log(form, 'Fommmmmmmmm')
   return (
     <div className={`mt-5 ${backgroundColor} p-5`}>
       <div className="sm:p-10 lg:p-20 flex flex-col lg:flex-row gap-10 lg:gap-10">

@@ -890,7 +890,7 @@ export interface FaqBlock {
  * via the `definition` "GetinTouchBlock".
  */
 export interface GetinTouchBlock {
-  form?: (number | null) | Form;
+  form?: Form | null | any ;
   title?: string | null;
   image: number | Media;
   desc?: string | null;
