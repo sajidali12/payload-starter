@@ -8,17 +8,6 @@ This template is right for you if you are working on:
 - A content publishing platform with a fully featured publication workflow
 - Exploring the capabilities of Payload
 
-Core features:
-
-- [Pre-configured Payload Config](#how-it-works)
-- [Authentication](#users-authentication)
-- [Access Control](#access-control)
-- [Layout Builder](#layout-builder)
-- [Draft Preview](#draft-preview)
-- [Live Preview](#live-preview)
-- [Redirects](#redirects)
-- [SEO](#seo)
-- [Website](#website)
 
 ## Quick Start
 
