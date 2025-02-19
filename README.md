@@ -1,4 +1,4 @@
-# Payload CMS Starter Kit
+# Payload CMS Starter Kit with Custom Blocks
 
 This is the a payload CMS starter kit created through payload official template. 
 
